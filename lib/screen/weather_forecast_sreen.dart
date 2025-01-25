@@ -5,6 +5,7 @@ import 'package:weather_map/api/weather_api.dart';
 import 'package:weather_map/models/weather_forecast_daily.dart';
 import 'package:weather_map/widgets/city_view.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:weather_map/widgets/detail_view.dart';
 import 'package:weather_map/widgets/temp_view.dart';
 
 class WeatherForecastScreenState extends StatefulWidget {
@@ -69,6 +70,10 @@ class _WeatherForecastScreenStateState
                           height: 50.0,
                         ),
                         TempView(snapshot: snapshot),
+                        SizedBox(height: 50.0),
+                        DatailView(
+                          snapshot: snapshot,
+                        ),
                       ],
                     );
                   } else {
