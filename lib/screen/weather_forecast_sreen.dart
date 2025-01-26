@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:weather_map/api/weather_api.dart';
 import 'package:weather_map/models/weather_forecast_daily.dart';
+import 'package:weather_map/widgets/bottom_list_view.dart';
 import 'package:weather_map/widgets/city_view.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_map/widgets/detail_view.dart';
@@ -74,6 +75,10 @@ class _WeatherForecastScreenStateState
                         DatailView(
                           snapshot: snapshot,
                         ),
+                        SizedBox(
+                          height: 50.0,
+                        ),
+                        BottomListView(snapshot: snapshot)
                       ],
                     );
                   } else {
