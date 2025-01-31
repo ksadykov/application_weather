@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:weather_map/api/weather_api.dart';
 import 'package:weather_map/models/weather_forecast_daily.dart';
+import 'package:weather_map/screen/city_screen.dart';
 import 'package:weather_map/widgets/bottom_list_view.dart';
 import 'package:weather_map/widgets/city_view.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -29,10 +30,10 @@ class _WeatherForecastScreenStateState
     forecastObject =
         WeatherApi().fetchWeatherForecastWithCity(cityName: _cityName);
 
-    forecastObject.then((weather) {
-      print(weather?.list?[0].weather?[0].main);
-      log('log: --  ${weather?.list?[0].weather?[0].main}');
-    });
+    // forecastObject.then((weather) {
+    //   print(weather?.list?[0].weather?[0].main);
+    //   log('log: --  ${weather?.list?[0].weather?[0].main}');
+    // });
   }
 
   @override
@@ -42,15 +43,28 @@ class _WeatherForecastScreenStateState
         centerTitle: true,
         backgroundColor: Colors.black,
         title: Text('Weather', style: TextStyle(color: Colors.white)),
-        leading: Icon(
-          Icons.my_location,
-          color: Colors.white,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.my_location,
+            color: Colors.white,
+          ),
         ),
         actions: [
-          Icon(
-            Icons.location_city,
-            color: Colors.white,
-          )
+          IconButton(
+              onPressed: () async {
+                var tappName = await Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CityScreen()));
+                if (tappName != Null) {
+                  _cityName = tappName;
+                  forecastObject = WeatherApi()
+                      .fetchWeatherForecastWithCity(cityName: _cityName);
+                }
+              },
+              icon: Icon(
+                Icons.location_city,
+                color: Colors.white,
+              ))
         ],
       ),
       body: ListView(

@@ -19,9 +19,13 @@ class CityView extends StatelessWidget {
         children: [
           Text(
             '$city, $country',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          Text('${Util.getFromattedDate(formattedDate)}'),
+          Text(
+            '${Util.getFromattedDate(formattedDate)}',
+            style: TextStyle(fontSize: 20),
+          ),
         ],
       ),
     );
